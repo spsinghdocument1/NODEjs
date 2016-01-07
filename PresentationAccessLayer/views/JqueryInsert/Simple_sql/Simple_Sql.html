@@ -1,0 +1,154 @@
+﻿<div align="center" style="border-color:transparent;">
+
+    <div align="center" style=" width:95%;  border:2;  border-radius: 6px;  background-color:#164A9C; color:#FFFFFF;">
+        <h1 align="center" style="  top:100%; padding-top:1%; font-family:Arial; font-size:x-large;">simple sql queries</h1>
+
+    </div>
+
+</div>
+<br />
+
+
+
+
+    <hr />
+    
+    <!--    <script src="../../Public/Script/jquery/1.11.3jquery.min.js" type="text/javascript"></script>  -->
+    <script type="text/javascript">
+        function save() {
+           // debugger;
+            var FirstName = $("#txtFirstname").val();
+            var LastName = $("#txtLastname").val();
+            var MIDILENAME = $("#txtMidileName").val();
+            var EMAIL = $("#txtEmai").val();
+            var MOBILENO = $("#txtMobileNo").val();
+            var FATHERNAME = $("#txtFathername").val();
+			
+         var Allrcord = "1";
+            var strval = [{ 'FirstName': FirstName.toString(), 'LastName': LastName.toString(), 'MIDILENAME': MIDILENAME.toString(), 'EMAIL': EMAIL.toString(), 'MOBILENO': MOBILENO.toString(), 'FATHERNAME': FATHERNAME.toString() }];
+
+            var Name = JSON.stringify(strval);
+
+            $.post('/Simple_sql', { Name: Name }, function (data) { ab(data); }).error(function (data) { ab(data); });
+
+            //if (data === 'yes') {
+            //    alert("login success");
+            //}
+
+
+        }
+        function ab(abc) {
+
+            alert(abc);
+
+        }
+		
+			   <!--    ------------------------------------------------------  -->
+	   $(document).ready(function () { get2(); });
+		   
+		  function get2() {
+   
+  var Name = "Table";
+          $.post('/Simple_sql',{ Name: Name }, function (data) { ab2(data); }).error(function (data) { ab2(data); });
+
+
+        }
+        function ab2(abc) {
+
+           // alert(abc);
+BuildTable(abc);
+        }
+		
+		function BuildTable(msg) {
+		 alert(msg);
+		 var table = "<table style=width:95%;><thead><tr>"
+              + "<th style=background-color:#FAEBD7;width:100px; >FirstName</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >LastName</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >MIDILENAME</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >EMAIL</th>"
+             + "<th style=background-color:#FAEBD7;width:100px; >MOBILENO</th>"
+            + "<th style=background-color:#FAEBD7;width:100px; >FATHERNAME</th>"
+            + "</thead><tbody>";
+			
+			  for (var cd in msg) {
+            var row = '<tr>';
+			
+					     row += '<td style=background-color:Silver;width:100px; >' + msg[cd].FirstName + '</td>';
+                row += '<td style=background-color:Silver;width:100px; >' + msg[cd].LastName + '</td>';
+                row += '<td style=background-color:Silver;width:100px; >' + msg[cd].MIDILENAME + '</td>';
+                row += '<td style=background-color:Silver;width:100px; >' + msg[cd].EMAIL + '</td>';
+                row += '<td style=background-color:Silver;width:100px; >' + msg[cd].MOBILENO + '</td>';
+                row += '<td style=background-color:Silver;width:100px; >' + msg[cd].FATHERNAME + '</td>';
+				
+				 row += '</tr>';
+            table += row;
+			
+			}
+			
+			table += "</tbody></table>";
+        $('#div1').html(table);
+		}
+   <!--    ------------------------------------------------------  -->
+
+    </script>
+    <div class="col-md-12">
+        <div class="col-sm-5 col-md-2" style=" padding:8px; ">FIRST NAME :</div>
+        <div class="col-sm-5 col-sm-offset-2 col-md-2 col-md-offset-0" style="padding:8px; ">
+            <input id="txtFirstname" type="text" style="Width:100%; font-size:medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 1px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" placeholder="ENTR First Name" />
+        </div>
+
+
+        <div class="col-sm-5 col-md-2" style="padding:8px;">LASTNAME :</div>
+        <div class="col-sm-5 col-sm-offset-2 col-md-2 col-md-offset-0" style=" padding:8px; "><input id="txtLastname" type="text" style="Width:100%; font-size:medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" placeholder="ENTR Last Name" /></div>
+
+        <div class="col-sm-5 col-md-2" style="padding:8px; ">MIDILENAME :</div>
+        <div class="col-sm-5 col-sm-offset-2 col-md-2 col-md-offset-0" style="padding:8px; "><input id="txtMidileName" type="text" style="Width:100%; font-size:medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" placeholder="ENTR Midile Name" /></div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-sm-5 col-md-2" style=" padding:8px; ">EMAIL :</div>
+        <div class="col-sm-5 col-sm-offset-2 col-md-2 col-md-offset-0" style="padding:8px; ">
+            <input id="txtEmai" type="text" style="Width:100%; font-size:medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 1px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" placeholder="ENTR Email" />
+        </div>
+
+
+        <div class="col-sm-5 col-md-2" style="padding:8px;">MOBILE NO. :</div>
+        <div class="col-sm-5 col-sm-offset-2 col-md-2 col-md-offset-0" style=" padding:8px; "><input id="txtMobileNo" type="text" style="Width:100%; font-size:medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" placeholder="ENTR Mobile NO" /></div>
+
+        <div class="col-sm-5 col-md-2" style="padding:8px; ">FATHERNAME :</div>
+        <div class="col-sm-5 col-sm-offset-2 col-md-2 col-md-offset-0" style="padding:8px; "><input id="txtFathername" type="text" style="Width:100%; font-size:medium;font-family: 'Arial Narrow';border: 1px solid #c4c4c4;padding: 1px 4px 1px 4px;border-radius: 4px; -moz-border-radius: 4px;-webkit-border-radius: 4px; box-shadow: 0px 0px 8px #d9d9d9;" placeholder="ENTR Father Name" /></div>
+    </div>
+    <br />
+    <br />
+    <br />
+<div align="center">
+    <div align="center"  class="col-md-12">
+        <button type="button" onclick="save();" class="btn btn-success fileinput-button">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span>SAVE</span>
+        </button>
+
+        <button type="reset" class="btn btn-warning cancel">
+            <i class="glyphicon glyphicon-ban-circle"></i>
+            <span>RESET</span>
+        </button>
+
+    </div>
+
+    </div>
+	
+    <br />
+    <br />
+    <br />
+	<div align="center">
+	 <div align="center" id = "div1"  class="col-md-12"></div>
+	
+	</div>
+ <br />
+    <br />
+    <br />
+	    <br />
+    <br />
+    <br />
+	    <br />
+    <br />
+    <br />

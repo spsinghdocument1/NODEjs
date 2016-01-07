@@ -1,0 +1,2 @@
+C:\Users\sp_singh\Desktop\Nodejs\Solution1\PresentationAccessLayer\obj\Debug\PresentationAccessLayer.njsprojResolveAssemblyReference.cache
+C:\Users\sp_singh\Desktop\Nodejs\Solution1\PresentationAccessLayer\bin\Microsoft.NodejsTools.WebRole.dll
